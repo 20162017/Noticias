@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Noticias.Models.Noticia>
+@{
+    ViewData["Title"] = "Notícias";
+
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create">Adicionar Notícia</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataPublicacao)
+                </th>
+               <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Titulo)
+                </td>
+                <td>
+                    @item.DataPublicacao.Value.ToString("dd/MM/yyyy  HH:mm")
+                    </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

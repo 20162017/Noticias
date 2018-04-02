@@ -1,0 +1,41 @@
+﻿@model Noticias.Models.Municipio
+
+@{
+    ViewData["Title"] = "Adicionar Município";
+}
+
+<h2>@ViewData["Title"] </h2>
+<hr />
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Nome" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Uf" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Uf" class="form-control" />
+                <span asp-validation-for="Uf" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Adicionar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Voltar a lista de Municípios</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
